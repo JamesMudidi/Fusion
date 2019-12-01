@@ -4,9 +4,16 @@ python: "3.7"
 
 services: postgresql
 
-install: pip install -r requirements.txt
+install:
+  - pip install -r requirements.txt
+  - pip install coverage
+  - pip install coveralls
 
-script:
+before_script:
+  - psql -c 'create database fusion;' -U postgres
   - python manage.py makemigrations
   - python manage.py migrate
-  - python manage.py test 
+
+script: coverage run --source='fusion/apps' manage.py test && coverage report
+
+after_success: coveralls
