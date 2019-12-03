@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from .models import Welcome
 
 # Create your views here.
-class HelloFusion(APIView):
+class HelloFusionCamper(APIView):
 
     def get(self, request):
-        return Response({"message": "Hello, Welcome to the Fusion API!"})
+        return Response({"message": "Hello, Welcome to the Fusion Camp API!"})
    

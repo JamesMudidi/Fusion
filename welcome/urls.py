@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import HelloFusion
+from .views import HelloFusionCamper
 
 urlpatterns = [
-    path("welcome/", HelloFusion.as_view(), name="welcome"),
+    path("welcome/", HelloFusionCamper.as_view()),
 ]
