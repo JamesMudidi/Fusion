@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-from account.models import User
+from account.models import User, BlackList
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
@@ -59,9 +59,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
         del validated_data['confirmed_password']
         return User.objects.create_user(**validated_data)
 
-    def do_passwords_match(self, password1, password2):
+    def do_passwords_match(self, password, confirmed_password):
         '''Check if passwords match.'''
-        return password1 == password2
+        return password == confirmed_password
 
 
 class LoginSerializer(serializers.Serializer):
@@ -83,4 +83,22 @@ class LoginSerializer(serializers.Serializer):
             "token": user.token
         }
         return user
-        
+
+class BlackListSerializer(serializers.ModelSerializer):
+    """
+    Handle serializing and deserializing blacklist tokens
+    """
+
+    class Meta:
+        model = BlackList
+        fields = ('__all__')
+
+        def LoogedOut(self, data):
+            auth_header = authentication.get_authorization_header(request).split()
+            token = auth_header[1].decode('utf-8')
+            data = {'token': token}
+
+            if self.data.token:
+                raise serializers.ValidationError({
+                'invalid': "Hello, Sorry but the email and password combination you entered is incorrect"
+            })

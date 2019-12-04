@@ -156,3 +156,20 @@ class PasswordResetToken(models.Model):
     token = models.CharField(max_length = 400)
     created = models.DateTimeField(auto_now = True)
     is_valid = models.BooleanField(default = True)
+
+class BlackList(BaseAbstractModel):
+    """
+    This class defines black list model.
+    Tokens of logged out users are stored here.
+    """
+
+    token = models.CharField(max_length=200, unique=True)
+
+    @staticmethod
+    def delete_tokens_older_than_a_day():
+        """
+        This method deletes tokens older than one day
+        """
+        past_24 = datetime.now() - timedelta(hours=24)
+
+        BlackList.objects.filter(created_at__lt=past_24).delete()
