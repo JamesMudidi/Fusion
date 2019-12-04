@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fusion',
+    'account',
     'welcome',
     'rest_framework',
 ]
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'account.user'
 ROOT_URLCONF = 'fusion.urls'
 
 TEMPLATES = [
@@ -79,13 +81,14 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "fusion",
+        "NAME": "fuse",
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "localhost",
         "PORT": 5432,
     }
 }
+
 
 
 # Password validation
