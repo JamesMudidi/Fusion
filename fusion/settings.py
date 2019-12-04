@@ -56,6 +56,9 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = 'account.user'
 ROOT_URLCONF = 'fusion.urls'
 
+# for all scheduled tasks
+SCHEDULER_AUTOSTART = True
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

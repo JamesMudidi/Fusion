@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-from account.models import User
+from account.models import User, BlackList
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
@@ -83,4 +83,12 @@ class LoginSerializer(serializers.Serializer):
             "token": user.token
         }
         return user
-        
+
+class BlackListSerializer(serializers.ModelSerializer):
+    """
+    Handle serializing and deserializing blacklist tokens
+    """
+
+    class Meta:
+        model = BlackList
+        fields = ('__all__')

@@ -1,8 +1,9 @@
 from rest_framework import ( generics, status )
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from account.serializers import RegistrationSerializer
-from account.serializers import LoginSerializer
+from rest_framework import authentication
+from account.serializers import RegistrationSerializer, BlackListSerializer, LoginSerializer
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from account.renderer import UserJSONRenderer
 from account.models import User
 
@@ -44,3 +45,32 @@ class LoginAPIView(generics.GenericAPIView):
             }
         }
         return Response(response, status=status.HTTP_200_OK)
+
+class LogoutView(generics.CreateAPIView):
+    """
+    This class deals with logging out a user by
+    blacklisting a user token
+    """
+    serializer_class = BlackListSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, **args):
+        """
+        This method blacklists a user token
+        """
+
+        auth_header = authentication.get_authorization_header(request).split()
+        token = auth_header[1].decode('utf-8')
+        data = {'token': token}
+
+        serializer = self.serializer_class(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(
+            {
+                'data':
+                    {"message": "Hello, You have successfully logged out"}
+            },
+            status=status.HTTP_200_OK
+        )
+        
