@@ -100,5 +100,5 @@ class BlackListSerializer(serializers.ModelSerializer):
 
             if self.data.token:
                 raise serializers.ValidationError({
-                'invalid': "Hello, Sorry but the email and password combination you entered is incorrect"
+                'invalid': "Hello, You have already logged out"
             })
