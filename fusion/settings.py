@@ -56,6 +56,9 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = 'account.user'
 ROOT_URLCONF = 'fusion.urls'
 
+# for all scheduled tasks
+SCHEDULER_AUTOSTART = True
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -81,7 +84,7 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "fuse",
+        "NAME": "fusion",
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": "localhost",

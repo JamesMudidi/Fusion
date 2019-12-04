@@ -59,9 +59,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
         del validated_data['confirmed_password']
         return User.objects.create_user(**validated_data)
 
-    def do_passwords_match(self, password, confirmed_password):
+    def do_passwords_match(self, password1, password2):
         '''Check if passwords match.'''
-        return password == confirmed_password
+        return password1 == password2
 
 
 class LoginSerializer(serializers.Serializer):
@@ -92,13 +92,3 @@ class BlackListSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlackList
         fields = ('__all__')
-
-        def LoogedOut(self, data):
-            auth_header = authentication.get_authorization_header(request).split()
-            token = auth_header[1].decode('utf-8')
-            data = {'token': token}
-
-            if self.data.token:
-                raise serializers.ValidationError({
-                'invalid': "Hello, You have already logged out"
-            })
