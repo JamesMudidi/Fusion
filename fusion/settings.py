@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "fusion",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "localhost",
+        "NAME": "dnfsepusip8dk",
+        "USER": "ggtcejfvcelpgi",
+        "PASSWORD": "b60ab7f950a9b73d90fd4a2cafa4f338cd3b1c84c70d63f8228e70041c75be33",
+        "HOST": "ec2-107-21-200-103.compute-1.amazonaws.com",
         "PORT": 5432,
     }
 }
