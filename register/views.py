@@ -41,25 +41,17 @@ class CreateAndListRegistrationView(generics.ListCreateAPIView):
         on the user making the request"""
         user = self.request.user
 
-        if user.is_authenticated and user.role == 'LA':
-            # admins view all property, no filtering
+        if user.is_authenticated and user.role == 'FA':
+            # admins view all clients, no filtering
             return Registration.objects.all()
 
-        if user.is_authenticated and user.employer.first():
-            # if the user is a client_admin, they see all published property
-            # and also their client's published and unpublished property.
-            client = user.employer.first()
-            return Registration.active_objects.all_published_and_all_by_client(
-                client=client)
+        if user.is_authenticated and user.role == 'CA':
+            # other users can only see published clients
+            return Registration.active_objects.all_published()
 
-        # other users only see published property
-        return Registration.active_objects.all_published()
 
     def create(self, request, *args, **kwargs):
-        """Create a property listing and save it to the database.
-        We pass image and video files to be uploaded to Cloudinary
-        we expect URLs to be returned. It is these URLs that we
-        pass to be serialized and then saved if everything is okay.
+        """Create a client listing and save it to the database.
         """
         # enable the request body to be mutable so that we can
         # modify the data to pass to the DB
@@ -69,6 +61,6 @@ class CreateAndListRegistrationView(generics.ListCreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         response = {
-            'data': {"register": serializer.data}
+            'data': {"user": serializer.data}
         }
         return Response(response, status=status.HTTP_201_CREATED)

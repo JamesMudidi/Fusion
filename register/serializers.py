@@ -50,7 +50,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         }
     )
 
-    emailOwner = serializers.EmailField(
+    emailOwner = serializers.CharField(
         required=True,
         error_messages={
             "required": "Hello, Kindly let us know who owns this Email",
@@ -104,7 +104,5 @@ class RegistrationSerializer(serializers.ModelSerializer):
         fields = ('firstName', 'lastName', 'dateOfBirth', 'phoneNumber',
                 'phoneNumberOwner', 'email', 'emailOwner', 'nextOfKin1Title',
                 'nextOfKin1Name', 'nextOfKin1Number', 'tribe', 'homeChurch', 'sponsored')
-        # exclude = ('is_deleted', 'educationLevel', 'educationClass',
-        #         'career', 'shirtSize', 'otherChurches', 'health', 'otherName')
         read_only_fields = ('createdBy', 'publish_status', 'createdAt',
                             'updatedAt', 'delete_status')
