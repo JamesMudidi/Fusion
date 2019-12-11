@@ -35,6 +35,9 @@ class IsClientAdmin(BasePermission):
         user = request.user if request.user.is_authenticated else None
         if user.role == 'CA':
             return user and user.role == 'CA'
+        if user.role == 'LA':
+            return user and user.role == 'LA'
+        
 
 
 class IsOwner(BasePermission):
