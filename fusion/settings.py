@@ -88,14 +88,15 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+db_from_env = dj_database_url.config()
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "dnfsepusip8dk",
-        "USER": "ggtcejfvcelpgi",
-        "PASSWORD": "b60ab7f950a9b73d90fd4a2cafa4f338cd3b1c84c70d63f8228e70041c75be33",
-        "HOST": "ec2-107-21-200-103.compute-1.amazonaws.com",
-        "PORT": 5432,
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME', 'postgres'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 
