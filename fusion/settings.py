@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'fusion-v1.herokuapp.com/'
+    'fusion-v1.herokuapp.com'
 ]
 
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'account',
     'welcome',
     'rest_framework',
+    'register'
 ]
 
 MIDDLEWARE = [
@@ -88,13 +89,13 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-db_from_env = dj_database_url.config()
+# db_from_env = dj_database_url.config()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'postgres'),
+        'NAME': os.environ.get('DB_NAME', 'fusion'),
         'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
