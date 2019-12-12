@@ -4,7 +4,7 @@ python: "3.6"
 
 services:
   - postgresql
-  
+
 env:
   global:
     - CC_TEST_REPORTER_ID=$reporter_id
@@ -15,9 +15,9 @@ install:
   - pip install coveralls
 
 before_script:
-  - export DB_NAME='fusion_db'
+  - export DB_NAME='fusion'
   - export DB_USER='postgres'
-  - psql -c 'create database fusion_db;' -U postgres
+  - psql -c 'create database fusion;' -U postgres
   - python manage.py makemigrations
   - python manage.py migrate
   - export CC_TEST_REPORTER_ID=$reporter_id
