@@ -172,4 +172,4 @@ class BlackList(BaseAbstractModel):
         """
         past_24 = datetime.now() - timedelta(hours=24)
 
-        BlackList.objects.filter(created_at__lt=past_24).delete()
+        BlackList(created_at__lt=past_24).delete()
