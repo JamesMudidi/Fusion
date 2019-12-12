@@ -15,8 +15,6 @@ install:
   - pip install coveralls
 
 before_script:
-  - export DB_NAME='fusion'
-  - export DB_USER='postgres'
   - psql -c 'create database fusion;' -U postgres
   - python manage.py makemigrations
   - python manage.py migrate
