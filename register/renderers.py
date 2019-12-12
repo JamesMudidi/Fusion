@@ -67,9 +67,9 @@ class RegistrationJSONRenderer(JSONRenderer):
                 return json.dumps({
                     'data': {'users': data}
                 })
-
         return json.dumps({
-            'data': {'users': data}
+            'data': {'users': data},
+            'total': data.count(data)
         })
 
 

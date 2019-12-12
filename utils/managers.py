@@ -14,6 +14,10 @@ class CustomQuerySet(QuerySet):
         '''Return only objects that haven't been soft deleted.'''
         return self.filter(is_deleted=False)
 
+    def _total(self):
+        '''Return only objects that haven't been soft deleted.'''
+        return self.filter(is_deleted=False).count()
+
     def all_objects(self):
         '''Return all objects that haven't been soft deleted'''
         return self._active()
