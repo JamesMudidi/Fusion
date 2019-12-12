@@ -29,7 +29,7 @@ omit =
     */account/views.py
     */register/filters.py
     */register/renderers.py
-    */register/tests.py
+    */register/views.py
     */utils/managers.py
     */utils/permissions.py
     */utils/views.py
