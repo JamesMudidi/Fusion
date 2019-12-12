@@ -4,7 +4,7 @@ python: "3.6"
 
 services:
   - postgresql
-
+  
 env:
   global:
     - CC_TEST_REPORTER_ID=$reporter_id
