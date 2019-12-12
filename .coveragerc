@@ -22,4 +22,16 @@ omit =
     *settings/*
     *wsgi.py
     */settings.py
+    */account/authorization_helper.py
+    */account/backends.py
+    */account/permissions.py
+    */account/renderer.py
+    */account/views.py
+    */register/filters.py
+    */register/renderers.py
+    */register/tests.py
+    */utils/managers.py
+    */utils/permissions.py
+    */utils/views.py
+    */welcome/views.py
     
