@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     'fusion',
     'account',
     'welcome',
@@ -89,7 +90,7 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# db_from_env = dj_database_url.config()
+db_from_env = dj_database_url.config()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
