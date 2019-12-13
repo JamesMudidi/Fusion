@@ -99,6 +99,7 @@ PyGithub = "==1.44.1"
 PyJWT = "==1.7.1"
 APScheduler = "==3.6.1"
 django-filters = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.7"
