@@ -98,6 +98,7 @@ Jinja2 = "==2.10.3"
 PyGithub = "==1.44.1"
 PyJWT = "==1.7.1"
 APScheduler = "==3.6.1"
+django-filters = "*"
 
 [requires]
 python_version = "3.7"
