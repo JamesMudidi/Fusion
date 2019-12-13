@@ -21,9 +21,10 @@ class Registration(models.Model):
         ('T', 'TERTIARY')
     )
 
-    SPONSORED = (
-        ('Y', 'YES'),
-        ('N', 'NO')
+    SPONSORED_BY = (
+        ('CI', 'COMPASSION INTERNATIONAL'),
+        ('K', 'KYAMPISI'),
+        ('S', 'SELF')
     )
 
     id = models.UUIDField(unique=True, primary_key=True, default=uuid.uuid4, editable=False)
@@ -48,7 +49,7 @@ class Registration(models.Model):
     tribe = models.CharField(max_length=255)
     homeChurch = models.CharField(max_length=255)
     otherChurches = models.CharField(max_length=255)
-    sponsored = models.CharField(max_length=1, choices=SPONSORED)
+    sponsored = models.CharField(max_length=2, choices=SPONSORED_BY)
     health = models.TextField()
     createdBy = models.ForeignKey(User, to_field="username", null=True, blank=True, on_delete=models.DO_NOTHING)
     is_published = models.BooleanField(default=True)
