@@ -85,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'fusion.wsgi'
+WSGI_APPLICATION = 'fusion.wsgi.application'
 
 
 # Database
