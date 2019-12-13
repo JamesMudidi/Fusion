@@ -23,13 +23,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         }
     )
     confirmed_password = serializers.CharField(
-        max_length = 128,
-        min_length = 6,
         write_only = True,
-        error_messages = {
-            'min_length': 'Hello, Password should be at least {min_length} characters',
-            'max_length': 'Hello, Password should be less than {max_length} characters'
-        }
     )
 
     class Meta:
