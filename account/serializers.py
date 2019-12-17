@@ -43,7 +43,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
         if not self.do_passwords_match(data['password'], confirmed_password):
             raise serializers.ValidationError({
-                'passwords': ('Hello, The password combination you entered does not match')
+                'error': ('Hello, The password combination you entered does not match')
             })
 
         return data
@@ -70,7 +70,7 @@ class LoginSerializer(serializers.Serializer):
         user = authenticate(username=email, password=password)
         if user is None:
             raise serializers.ValidationError({
-                'invalid': "Hello, Sorry but the email and password combination you entered is incorrect"
+                'error': "Hello, Sorry but the email and password combination you entered is incorrect"
             })
         user = {
             "email": user.email,
