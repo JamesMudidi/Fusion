@@ -31,7 +31,7 @@ class Registration(models.Model):
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
     otherName = models.CharField(max_length=50)
-    dateOfBirth = models.DateField()
+    dateOfBirth = models.DateField(format='%d/%m/%Y)
     phoneNumber = models.CharField(max_length=16)
     phoneNumberOwner = models.CharField(max_length=100)
     email = models.EmailField(max_length=255)
