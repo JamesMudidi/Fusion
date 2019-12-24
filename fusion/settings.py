@@ -90,7 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fusion.wsgi.application'
 
 REST_FRAMEWORK = {
-    'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S",
+    'DATE_FORMAT': "%d/%m/%Y",
 }
 
 # Database
