@@ -89,6 +89,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fusion.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -104,9 +105,8 @@ DATABASES = {
     }
 }
 
-REST_FRAMEWORK = {
-    'DATE_INPUT_FORMATS': [("%d-%m-%Y"),]
-}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
