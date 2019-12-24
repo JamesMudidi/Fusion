@@ -36,24 +36,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
         }
     )
 
-    phoneNumberOwner = serializers.CharField(
-        required=True,
-        error_messages={
-            "error": "Hello, Kindly let us know who owns this Phone number",
-        }
-    )
-
     email = serializers.EmailField(
         required=True,
         error_messages={
             "error": "Hello, Kindly provide us with a working Email that we can contact you on",
-        }
-    )
-
-    emailOwner = serializers.CharField(
-        required=True,
-        error_messages={
-            "error": "Hello, Kindly let us know who owns this Email",
         }
     )
 
@@ -92,17 +78,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
         }
     )
 
-    sponsored = serializers.CharField(
-        required=True,
-        error_messages={
-            "error": "Hello, Are you sponsered by Compassion",
-        }
-    )
-
     class Meta:
         model = Registration
-        fields = ('firstName', 'lastName', 'dateOfBirth', 'phoneNumber',
-                'phoneNumberOwner', 'email', 'emailOwner', 'nextOfKin1Title',
-                'nextOfKin1Name', 'nextOfKin1Number', 'tribe', 'homeChurch', 'sponsored')
+        fields = ('firstName', 'lastName', 'dateOfBirth', 'phoneNumber', 'email',
+                'nextOfKin1Title', 'nextOfKin1Name', 'nextOfKin1Number', 'tribe',
+                'homeChurch')
         read_only_fields = ('createdBy', 'publish_status', 'createdAt',
                             'updatedAt', 'delete_status')

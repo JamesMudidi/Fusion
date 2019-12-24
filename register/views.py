@@ -13,7 +13,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from register.filters import RegistrationFilter
 from utils.permissions import (
     CanEditUsers,
-    IsClientAdmin,
+    # IsClientAdmin,
     IsOwner,
     ReadOnly,
 )
@@ -23,7 +23,7 @@ class CreateAndListRegistrationView(generics.ListCreateAPIView):
     """Handle requests for creation of property"""
 
     serializer_class = RegistrationSerializer
-    permission_classes = (IsClientAdmin | ReadOnly,)
+    # permission_classes = (IsClientAdmin | ReadOnly,)
     renderer_classes = (RegistrationJSONRenderer,)
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, )
     filter_class = RegistrationFilter
