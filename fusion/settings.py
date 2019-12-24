@@ -89,6 +89,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fusion.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
