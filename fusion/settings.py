@@ -89,9 +89,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fusion.wsgi.application'
 
-DATE_INPUT_FORMATS = [
-    ("%d-%m-%Y"),
-]
+REST_FRAMEWORK = {
+    'DATE_FORMAT': "%m/%d/%Y",
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
