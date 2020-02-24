@@ -33,4 +33,4 @@ omit =
     */utils/managers.py
     */utils/permissions.py
     */utils/views.py
-    */fusion_api\asgi.py 
+    */fusion_api/asgi.py 
